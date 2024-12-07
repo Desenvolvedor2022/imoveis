@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Imóvel</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .shelf {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .shelf-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .shelf-item img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .shelf-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .shelf-item p {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .shelf-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #004080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .shelf-item a:hover {
+            background-color: #003366;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .imovel-imagens {
+            position: relative;
+            display: flex;
+            justify-content: center; /* Centraliza as imagens horizontalmente */
+            align-items: center; /* Centraliza as imagens verticalmente */
+            overflow: hidden;
+            max-width: 90%; /* Ajuste o máximo de largura para dar mais espaço */
+            margin: 0 auto; /* Centraliza o carrossel na tela */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .imovel-imagens img {
+            width: 80%; /* Ajuste a largura das imagens para que fiquem mais proporcionais */
+            max-height: 400px; /* Limita a altura máxima das imagens */
+            margin: 10px;
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Estilos do Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jefter Corretor de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="apartamentos.html">Apartamentos</a></li>
+                <li><a href="casas.html">Casas</a></li>
+                <li><a href="sobrados.html">Sobrados</a></li>
+                <li><a href="kitnets.html">Kitnets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Detalhes do Imóvel</h2>
+        <div id="imovel-detalhes">
+            <!-- Conteúdo será carregado dinamicamente -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Imóveis Barueri. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Dados dos imóveis organizados por categoria
+        const imoveis = {
+            apartamentos: {
+                1: {
+                    titulo: "Apartamento no Centro",
+                    descricao: "3 quartos, 2 banheiros, 1 vaga - R$ 350.000",
+                    imagens: ["img/imovel2.jpg", "img/imovel2.jpg", "img/imovel3.jpg"]
+                },
+                2: {
+                    titulo: "Apartamento com Varanda",
+                    descricao: "2 quartos, 1 banheiro, 1 vaga - R$ 300.000",
+                    imagens: ["img/imovel3.jpg", "img/apartamento4.jpg"]
+                },
+                3: {
+                    titulo: "Apartamento Sem Sacada",
+                    descricao: "03 quartos, 01 suíte, 02 vagas - R$ 550.000",
+                    imagens: ["img/nacoes-apto/dormitorios.jpeg", "img/nacoes-apto/piscina1.jpeg", "img/nacoes-apto/salao1.jpeg"]
+                },
+                4: {
+                    titulo: "Apartamento Alto Padrão Cyrela!",
+                    descricao: "03 quartos, 01 suíte, 02 vagas - R$ 550.000",
+                    imagens: ["img/cyrela1/piscina.jpg", "img/cyrela1/sala.jpg", "img/cyrela1/sala2.jpg", "img/cyrela1/suite.jpg"]
+                }
+            },
+            casas: {
+                1: {
+                    titulo: "Casa no Bairro X",
+                    descricao: "3 quartos, 2 banheiros, 1 vaga - R$ 400.000",
+                    imagens: ["img/casa-1.jpg", "img/casa-2.jpg"]
+                },
+                2: {
+                    titulo: "Casa no Centro",
+                    descricao: "2 quartos, 1 banheiro, 1 vaga - R$ 350.000",
+                    imagens: ["img/casa2.jpeg", "img/casa3.jpeg"]
+                }
+            },
+
+            sobrados: {
+                1: {
+                    titulo: "Belo Sobrado Centro",
+                    descricao: "2 quartos, 1 banheiro, 1 vaga - R$ 350.000",
+                    imagens: ["img/sobrado1-2.jpeg", "img/sobrado1-1.jpeg"]
+                }
+            },
+            Kitnets: {
+                1:{
+                    titulo: "Linda Kitnet com Sacada",
+                    descricao: "01 quarto, cozinha, banheiro, Sacada R$ 200.000,00",
+                    imagens: ["img/cyrela1/piscina.jpg"]
+                }
+            }
+        }
+          
+        // Captura os parâmetros "categoria" e "id" da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoria = urlParams.get("categoria");
+        const id = parseInt(urlParams.get("id"));
+
+        // Seleciona o elemento para exibir os detalhes
+        const detalhesDiv = document.getElementById("imovel-detalhes");
+
+        // Verifica se a categoria e o imóvel existem
+        if (imoveis[categoria] && imoveis[categoria][id]) {
+            const imovel = imoveis[categoria][id];
+
+            // Atualiza o conteúdo com as informações do imóvel
+            detalhesDiv.innerHTML = `
+                <h3>${imovel.titulo}</h3>
+                <p>${imovel.descricao}</p>
+                <div class="imovel-imagens">
+                    <button class="carousel-btn prev" onclick="changeImage(-1)">&#10094;</button>
+                    <img id="mainImage" src="${imovel.imagens[0]}" alt="Imagem do Imóvel">
+                    <button class="carousel-btn next" onclick="changeImage(1)">&#10095;</button>
+                </div>
+            `;
+        }
+
+        // Função para mostrar o modal
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModal = document.getElementById("closeModal");
+
+        document.querySelectorAll(".imovel-imagens img").forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+            });
+        });
+
+        closeModal.onclick = () => {
+            modal.style.display = "none";
+        }
+
+        // Função para navegar pelas imagens do carrossel
+        let currentImageIndex = 0;
+
+        function changeImage(direction) {
+            const imovel = imoveis[categoria][id];
+            currentImageIndex += direction;
+
+            if (currentImageIndex >= imovel.imagens.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = imovel.imagens.length - 1;
+            }
+
+            document.getElementById("mainImage").src = imovel.imagens[currentImageIndex];
+        }
+    </script>
+</body>
+</html>

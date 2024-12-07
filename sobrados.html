@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobrados à Venda</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+        }
+        
+        header h1 {
+            margin: 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .shelf {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .shelf-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .shelf-item img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .shelf-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        
+        .shelf-item p {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .shelf-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #004080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .shelf-item a:hover {
+            background-color: #003366;
+        }
+        
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        </style>
+        
+
+</head>
+<body>
+    <header>
+        <h1>Jefter Corretor de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="kitnets.html">Kitnets</a></li>
+                <li><a href="apartamentos.html">Apartamentos</a></li>
+                <li><a href="casas.html">Casas</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <h2>Sobrados à Venda</h2>
+        <div class="property-list">
+            <!-- Sobrado 1 -->
+            <div class="property-item">
+                <h3>Sobrado no Bairro Perdizes</h3>
+                <img src="C:\Users\jefte\OneDrive\Área de Trabalho\carro\img\sobra1-1.jpeg" alt="Imagem do Sobrado no Bairro Perdizes">
+                <p><strong>Quartos:</strong> 3</p>
+                <p><strong>Banheiros:</strong> 2</p>
+                <p><strong>Vagas:</strong> 2</p>
+                <p><strong>Preço:</strong> R$ 450.000</p>
+                <a href="detalhes.html?categoria=sobrados&id=1" class="details-link">Ver Detalhes</a>
+            </div>
+
+            <!-- Sobrado 2 -->
+            <div class="property-item">
+                <h3>Sobrado no Bairro Tamboré</h3>
+                <img src="img/sobrado2-1.jpeg" alt="Imagem do Sobrado no Bairro tambore">
+                <p><strong>Quartos:</strong> 4</p>
+                <p><strong>Banheiros:</strong> 3</p>
+                <p><strong>Vagas:</strong> 2</p>
+                <p><strong>Preço:</strong> R$ 480.000</p>
+                <a href="detalhes.html?categoria=sobrados&id=2" class="details-link">Ver Detalhes</a>
+            </div>
+
+            <!-- Mais itens podem ser adicionados aqui -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Imóveis Barueri. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

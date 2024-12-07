@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imóveis</title>
+    <link rel="stylesheet" href="styles.css">
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 200px; /* Largura fixa para as imagens */
+    height: 150px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Faz as imagens se ajustarem sem distorção */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Jefter Corretor de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="C:\Users\jefte\OneDrive\Área de Trabalho\carro\index.html">Home</a></li>
+                <li><a href="C:\Users\jefte\OneDrive\Área de Trabalho\carro\sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="Apartamentos.html">Apartamentos</a></li>
+                <li><a href="Casas.html">Casas</a></li>
+                <li><a href="galeria.html" class="active">Galeria</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="gallery-item">
+    <a href="apartamentos.html">
+        <img src="C:\Users\jefte\OneDrive\Área de Trabalho\carro\img\imovel4.jpg" alt="Apartamentos">
+        <img src="C:\Users\jefte\OneDrive\Área de Trabalho\carro\img\casa-1.jpg">
+        <p>Apartamentos</p>
+    </a>
+</div>
+<div class="gallery-item">
+    <a href="Casas.html">
+        <img src="C:\Users\jefte\OneDrive\Área de Trabalho\carro\img\casa-1.jpg" alt="Casas">
+        <p>Casas</p>
+    </a>
+</div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Imóveis Barueri. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

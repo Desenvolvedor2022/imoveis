@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tudo sobre Google Glaas</title>
+   <link rel="stylesheet"  href="_css/estilo.css"/>
+   <link rel="stylesheet" href="_css/form.css"/>
+   <script  language="javascript" src="_javascript/funcoes.js"></script>
+   <style>
+   
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between; /* Itens espaçados horizontalmente */
+        align-items: center; /* Alinhados verticalmente */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    nav h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex; /* Alinhamento horizontal */
+        gap: 15px; /* Espaço entre os itens */
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: #575757;
+    }
+
+
+
+    </style>
+   <script>
+        function calc_total() {
+        var qtd = parseInt(document.getElementById('cQtd').value);
+        tot = qtd * 1500;
+        document.getElementById('cTot').value = tot;
+    }
+   </script>
+</head>
+         
+<body>
+<header>
+        <h1>Imóveis Barueri</h1>
+        <nav id="menu">
+    <h1>Jefter Corretor de Imóveis</h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+    </ul>
+</nav>
+
+    </header>
+
+
+
+    
+   <form method="post" id="fContato" action="mailto:jefteralmeidasilva@gmail.com" oninput="calc_total();">
+
+<fieldset id="usuario"><legend>Indentifição do Usuário</legend></fildset>
+    <p>Nome:<input type="text" name="tNome"id="cNome" size="30" maxlength="30" placeholder="Nome Completo"></p>
+   <p> Senha:<input type="password" name="tSenha" id="cSenha" size="10" maxlength="10" placeholder="Senha"></p>
+    <p>E-mail:<input type="email" name="tMail id="cMail" size="40" maxlength="40" placeholder="E-mail"></p>
+    <fieldset id="sexo"><legend>sexo</legend>
+        <input type="radio" name="tSexo" id="cMasc" checked/> <label for="cMasc">Masculino</label>
+        <input type="radio" name="tSexo" id="cFem"/> <label for="cFem"> Feminino </label></fieldset>
+    <p>Data de Nascimento: <input type="date" name="tNasc" id="cNasc"/></p>
+</fieldset>
+
+ <fieldset id="endereco"><legend> Endereço do Usuário</legend>
+    <p>Logradouro: <input type="text" name="tRua" id="cRua" size="13" maxlength="80" placeholder="Rua, Av, Travessa..."/></p>
+    <p><label for="cNum">Número:</label> <input type="number" name="tNum" id="cNum" min="0" max="9999"/>
+   <p><label for="cEst">Estado</label>
+    <select name="tEst" id="cEst">
+        <optgroup label="Região Sudeste">
+    <option>Rio de Janeiro </option>
+    <option  value="SP" selected>São Paulo</option>
+    <option value="MG">Minas Gerais</option>
+        </optgroup>
+    <optgroup label="Região Sul">
+    <option value="PR">Paraná</option>
+    <option value="RS">Rio Grande do Sul</option>
+    <option value="SC">Santa Catarina</option>
+    </optgroup>
+    </select>
+    <p>Cidade: <label for="cCid">Cidade</label>
+    <input type="text" name="tCid" id="cCid" maxlength="40" placeholder="Sua Cidade" list="cidades"/>
+    </p>
+    <datalist id="cidades">
+        <option value="Rio de Janeiro"></option>
+        <option value="Niterói"></option>
+        <option value="Belford Roxo"></option>
+        <option value="Nova Iguaçu"></option>
+
+    </datalist>
+    
+ </fieldset>
+
+<fieldset id="mensagem"><legend> Mensagem do Usuário</legend>
+   <p><label for="cUrg">Grau de Urgência: </label>
+    Min<input type="range" name="tUrg" id="cUrg" min="0" max="10" step="2"/>Máx</p>
+    <p><label for="cMsg">Mensagem:</label>
+    <textarea name="tMsg" id="cMsg" cols="45" rows="5" placeholder="Deixe aqui sua Mensagem"></textarea></p>
+</fieldset>
+<fieldset id="pedido"><legend> Quero um Google Glass</legend>
+    <p><input type="checkbox" name="tPed" id="cPed" checked/>
+    <label for="cPed">Gostaria de adquirir um Google Glass quando disponível
+    <p><label for="cCor">Cor:</label>
+    <input type="color" name="tCor" id="cCor" value="#0000ff"/></p>
+    <P><label for="cQtd">Quantidade:</label>
+    <input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0"/></P>
+    <p><label for="cTot">Preço Total: R$</label>
+    <input type="text" name="tTot" id="cTot" placeholder="Total a pagar" readonly/></p>
+</fieldset>
+
+    <input type="image" name="tEnviar" src="_imagens.html/botao-enviar.png"/>
+   </form>
+<footer id="rodape">
+    <p>Copyright 2022 - by Jefter Almeida<br/>
+    <a href="http://facebook.com/cursoemvideo" target="_blank">Facebook </a> |
+    <a href="http://Twitter.com/cursoemvideos" target="_blank">Twitter </a></p>
+    </footer>
+    </div>
+    </body>
+    </html> 
